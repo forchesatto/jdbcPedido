@@ -6,6 +6,8 @@ public class Produto {
 	private String nome;
 	private Double valor;
 	
+	private String testeGit;
+	
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
