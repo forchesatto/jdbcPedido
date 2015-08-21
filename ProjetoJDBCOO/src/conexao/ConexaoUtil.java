@@ -15,8 +15,7 @@ public class ConexaoUtil {
 		try {
 			connection = DriverManager.getConnection(endereco, usuario, senha);
 		} catch (SQLException e) {
-			System.out.println("Erro ao conectar no banco de dados");
-			e.printStackTrace();
+			System.out.println("Erro ao conectar no banco de dados"+e.getMessage());
 		}
 	}
 	
