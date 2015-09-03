@@ -1,14 +1,14 @@
 package teste;
 
-import dao.DaoFactory;
 import dao.ProdutoDAO;
+import dao.factory.DaoFactory;
 import model.Produto;
 
 public class ProdutoDAOTeste {
 
 	public static void main(String[] args) {
 		
-		ProdutoDAO produtoDao = DaoFactory.para().produtoDao();
+		ProdutoDAO produtoDao = DaoFactory.get().produtoDao();
 		
 		Produto produto = new Produto();
 		produto.setNome("Produto 1");
