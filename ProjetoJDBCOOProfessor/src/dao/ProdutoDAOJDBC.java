@@ -20,6 +20,7 @@ public class ProdutoDAOJDBC implements ProdutoDAO {
 	
 	@Override
 	public void inserir(Produto produto) {
+		System.out.println("Salvando em banco");
 		String sql = "insert into produto (nome, valor) values(?,?)";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
