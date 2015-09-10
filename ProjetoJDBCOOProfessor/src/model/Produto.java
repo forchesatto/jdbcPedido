@@ -1,12 +1,10 @@
 package model;
 
-public class Produto {
+public class Produto implements PossuiNome {
 
 	private Integer codigo;
 	private String nome;
 	private Double valor;
-	
-	private String testeGit;
 	
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
@@ -30,5 +28,10 @@ public class Produto {
 
 	public Double getValor() {
 		return valor;
+	}
+	
+	@Override
+	public String toString() {
+		return this.codigo + " - "+ this.nome;
 	}
 }
