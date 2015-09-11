@@ -8,28 +8,27 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import dao.factory.DaoFactory;
 import model.Produto;
 
-public class TesteJframe  extends JFrame{
+public class ProdutoLista extends JFrame {
 
-	private static final long serialVersionUID = -2642452567387615888L;
+	private static final long serialVersionUID = 5009722415013249997L;
 
+	private ProdutoForm produtoForm;
 	private JComboBox<Produto> combo;
-	private JLabel label;
 	private JButton botao;
 	
-	public TesteJframe(){
+	
+	public ProdutoLista(ProdutoForm produtoForm) {
+		this.produtoForm = produtoForm;
 		setLayout(null);
 		setBounds(MAXIMIZED_VERT, MAXIMIZED_HORIZ,300,400);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		createCombo(DaoFactory.get().produtoDao().todos());
-		createLabel();
 		createBotao();
 		add(combo);
-		add(label);
 		add(botao);
 	}
 	
@@ -40,11 +39,6 @@ public class TesteJframe  extends JFrame{
 		combo.setBounds(3, 10, 150, 25);
 	}
 	
-	private void createLabel(){
-		label = new JLabel("código");
-		label.setBounds(3, 45, 50, 25);
-	}
-	
 	private void createBotao(){
 		botao = new JButton("OK");
 		botao.setBounds(3, 85, 30, 20);
@@ -53,12 +47,8 @@ public class TesteJframe  extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				//Seleciona direto pois adicionamos produtos dentro do combo.
 				Produto produto = (Produto)combo.getSelectedItem();
-				label.setText(produto.getCodigo().toString());
+				produtoForm.populaTextField(produto);
 			}
 		});
-	}
-	
-	public static void main(String[] args) {
-		new TesteJframe().setVisible(true);
 	}
 }
