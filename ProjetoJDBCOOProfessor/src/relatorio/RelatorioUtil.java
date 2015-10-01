@@ -62,7 +62,7 @@ public class RelatorioUtil {
 		try {
 			JasperDesign jasperDesign = JRXmlLoader.load(pathRelatorio); // Lê o
 			
-			JRDataSource dataSource = new JRBeanCollectionDataSource(dados);															// arquivo
+			JRDataSource dataSource = new JRBeanCollectionDataSource(dados,false);															// arquivo
 			
 			JasperReport jr = JasperCompileManager.compileReport(jasperDesign); // Compila
 

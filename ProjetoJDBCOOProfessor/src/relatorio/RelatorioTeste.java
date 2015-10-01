@@ -15,18 +15,18 @@ public class RelatorioTeste {
 		Map<String, Object> parametros = new HashMap<String, Object>();
 		parametros.put("codigo", 1);
 		
-//		new RelatorioUtil().viewReport(
-//				"src/relatorio/PrimeiroRelatorio.jasper",
-//				ConexaoUtil.getCon(), parametros);
-//
-//		new RelatorioUtil().gerarPdf(
-//				"src/relatorio/PrimeiroRelatorio.jasper",
-//				ConexaoUtil.getCon(), parametros);
+		new RelatorioUtil().viewReport(
+				"src/relatorio/PrimeiroRelatorio.jasper",
+				ConexaoUtil.getCon(), parametros);
+
+		new RelatorioUtil().gerarPdf(
+				"src/relatorio/PrimeiroRelatorio.jasper",
+				ConexaoUtil.getCon(), parametros);
 
 		List<Produto> produtos = DaoFactory.get().produtoDao().todos();
 				
 		new RelatorioUtil().compileViewReport(
-				"src/relatorio/PrimeiroRelatorioList.jrxml",
+				"src/relatorio/RelatorioProdutos.jrxml",
 				produtos, parametros);
 	}
 }
