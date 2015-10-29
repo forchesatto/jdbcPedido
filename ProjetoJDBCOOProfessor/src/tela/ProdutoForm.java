@@ -92,7 +92,7 @@ public class ProdutoForm extends JFrame{
 				try {
 					DaoFactory.get().produtoDao().inserir(produto);
 				} catch (ErroInserirBanco e1) {
-					JOptionPane.showMessageDialog(produtoForm, e1.getMessage());
+					JOptionPane.showMessageDialog(produtoForm, e1.getMensagemAmigavel());
 				}
 			}
 		});
