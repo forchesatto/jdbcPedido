@@ -7,9 +7,11 @@ import java.util.jar.JarInputStream;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dao.factory.DaoFactory;
+import exception.ErroInserirBanco;
 import model.Produto;
 
 public class ProdutoForm extends JFrame{
@@ -87,7 +89,11 @@ public class ProdutoForm extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				populaObjeto();
-				DaoFactory.get().produtoDao().inserir(produto);
+				try {
+					DaoFactory.get().produtoDao().inserir(produto);
+				} catch (ErroInserirBanco e1) {
+					JOptionPane.showMessageDialog(produtoForm, e1.getMessage());
+				}
 			}
 		});
 		add(this.btnSalvar);

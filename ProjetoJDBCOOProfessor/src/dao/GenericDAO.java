@@ -2,9 +2,11 @@ package dao;
 
 import java.util.List;
 
+import exception.ErroInserirBanco;
+
 public interface GenericDAO<T> {
 
-	void inserir(T entidade);
+	void inserir(T entidade) throws ErroInserirBanco;
 	
 	void alterar(T entidade);
 	

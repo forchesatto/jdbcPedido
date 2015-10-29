@@ -2,6 +2,7 @@ package teste;
 
 import dao.ProdutoDAO;
 import dao.factory.DaoFactory;
+import exception.ErroInserirBanco;
 import model.Produto;
 
 public class ProdutoDAOTeste {
@@ -14,6 +15,10 @@ public class ProdutoDAOTeste {
 		produto.setNome("Produto 1");
 		produto.setValor(10.0);
 		
-		produtoDao.inserir(produto);
+		try {
+			produtoDao.inserir(produto);
+		} catch (ErroInserirBanco e) {
+			e.printStackTrace();
+		}
 	}
 }

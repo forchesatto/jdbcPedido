@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import conexao.ConexaoUtil;
+import exception.ErroInserirBanco;
 import model.Produto;
 
 public class ProdutoDAOJDBC implements ProdutoDAO {
@@ -19,7 +22,7 @@ public class ProdutoDAOJDBC implements ProdutoDAO {
 	}
 	
 	@Override
-	public void inserir(Produto produto) {
+	public void inserir(Produto produto) throws ErroInserirBanco {
 		System.out.println("Salvando em banco");
 		String sql = "insert into produto (nome, valor) values(?,?)";
 		try {
@@ -28,12 +31,12 @@ public class ProdutoDAOJDBC implements ProdutoDAO {
 			pstmt.setDouble(2, produto.getValor());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new ErroInserirBanco(e.getMessage());
 		}
 	}
 
 	@Override
-	public void alterar(Produto produto) {
+	public void alterar(Produto produto){
 		String sql = "update produto set nome = ?, valor = ? where codigo = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
